@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'blog',
+    'user',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,4 +124,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-print(BASE_DIR)
+
+
+#   Here Add all static files Dirs
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
