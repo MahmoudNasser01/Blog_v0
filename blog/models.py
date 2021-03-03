@@ -22,6 +22,9 @@ class Comment(models.Model):
     active = models.BooleanField(default=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
 
+    class Meta:
+        ordering = ['-comment_date']
+
     # realted_name -> used when we want to call the comments from the posts in the view
 
     def __str__(self):

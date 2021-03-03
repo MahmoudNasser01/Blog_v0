@@ -1,0 +1,8 @@
+<ul class="">
+    {% for comment in last_5_comments %}
+        <li class="list-item"><a href="{% url 'detail' comment.post.id %}">{{ comment.body| slice:'45' }}..</a></li>
+    {% empty %}
+        لا يوجد  تعليقات
+    {% endfor %}
+
+</ul>

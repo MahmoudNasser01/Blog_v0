@@ -1,6 +1,8 @@
 <ul class="">
-    {% for post in posts %}
+    {% for post in last_5_posts %}
         <li class="list-item"><a href="{% url 'detail' post.id %}">{{ post.title }}</a></li>
+
     {% endfor %}
+
 
 </ul>
