@@ -24,6 +24,19 @@ a:hover{
 }
 
 
+.comment-card{
+    background-color:#fcfcfc2e;
+}
+
+.comments-body .card-title{
+    border-bottom:1px solid #ddd;
+}
+
+.no-comments{
+    border:4px dashed #F1F1F1 !important;
+     background-color:#F8F8F8;
+    margin:20px 0 !important;
+}
 
 /*   Start post Content     */
 

@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <div class="border p-3 m-4">
+    <div class="border p-3 my-4">
 
         <img src="{% static 'blog/images/avatar.svg' %}" style="max-width:70px" alt="صورة الناشر">
 
@@ -13,11 +13,12 @@
 
     </div>
 
-    <h1 class="border-bottom">التعليقات</h1>
+    <h1 class="border-bottom"> التعليقات ({{ comments.count }})</h1>
 
-    <div class="comments-body mt-4">
+    <div class="comments-body my-4">
+    {% if comments %}
         {% for comment in comments %}
-            <div class="card my-2 p-3">
+            <div class="card my-2 p-3 comment-card">
                 <div class="card-title">
                     <h3 class="">{{ comment.name }}</h3>
                     <small class="text-muted">{{ comment.comment_date|date:'d-m-Y' }} </small>
@@ -31,6 +32,26 @@
             </div>
 
         {% endfor %}
+
+        {% else %}
+
+        <div class="no-comments text-center m-auto p-4  mb-4 text-muted">
+            <h3>لا يوجد تعليقات</h3>
+        </div>
+
+    {% endif %}
+
+    </div>
+
+    <div class="newComment-body mt-5">
+    <h3 class="border-bottom">اضافه تعليق</h3>
+
+    <form method="POST" class="my-5">
+        {% csrf_token %}
+        {{ CommentForm.as_p }}
+        <input type="submit" value="نشر التعليق" class="btn btn-secondary">
+    </form>
+
     </div>
 
 {% endblock %}

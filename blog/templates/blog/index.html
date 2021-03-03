@@ -10,7 +10,7 @@
        <img src="{% static 'blog/images/avatar.svg' %}" style="max-width:70px" alt="صورة الناشر">
 
            <span class="text-muted mx-3">نشر في {{ post.post_date|date:'d-m-Y' }}</span>
-       <h3><a href="#">{{ post.title }}</a></h3>
+       <h3><a href="{% url 'detail' post.id %}">{{ post.title }}</a></h3>
        <p>{{ post.content }}</p>
 
        </div>
