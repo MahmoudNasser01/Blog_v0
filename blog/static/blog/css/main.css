@@ -13,7 +13,21 @@ body{
 }
 
 
+a:hover{
+
+    text-decoration: inherit;
+
+}
 
 .dropdown-menu .dropdown-item{
     text-align:right;
 }
+
+
+
+/*   Start post Content     */
+
+
+
+
+/*  End Post Content    */

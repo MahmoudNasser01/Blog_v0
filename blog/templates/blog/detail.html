@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="border p-3 m-4">
+
+        <img src="{% static 'blog/images/avatar.svg' %}" style="max-width:70px" alt="صورة الناشر">
+
+        <span class="text-muted mx-3">نشر في {{ post.post_date|date:'d-m-Y' }}</span>
+        <h3><a href="#">{{ post.title }}</a></h3>
+        <p>{{ post.content }}</p>
+
+    </div>
+
+    <h1 class="border-bottom">التعليقات</h1>
+
+    <div class="comments-body mt-4">
+        {% for comment in comments %}
+            <div class="card my-2 p-3">
+                <div class="card-title">
+                    <h3 class="">{{ comment.name }}</h3>
+                    <small class="text-muted">{{ comment.comment_date|date:'d-m-Y' }} </small>
+
+                </div>
+                <div class="card-body">
+                    <p class="">{{ comment.body }}</p>
+                </div>
+
+
+            </div>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}
