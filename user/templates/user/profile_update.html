@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <h3 class="border-bottom p-2">تعديل الملف الشخصي</h3>
+
+    <form method="POST" enctype="multipart/form-data" class="my-5 border p-5">
+
+        {% csrf_token %}
+        {{ user_form|crispy }}
+        <!-----{{ profile_form|crispy }}---->
+
+        <div class="my-5">
+            <span>صورة الملف الشخصي*</span>
+            <br>
+            <p class="my-4">الصورة الحالية:
+            <img src="{{ user.profile.image.url }}" style="width: 200px">
+            </p>
+            <label for="image" class="btn btn-outline-secondary my-3">اختيار صورة<i class="fas fa-camera mx-2"></i></label>
+            <input type="file" name="image" id="image" accept="image/*" style="display: none">
+        </div>
+
+        <input type="submit" value="تعديل" class="btn btn-secondary">
+        <div class="border-top mt-5">
+            <small><a href="{% url 'login' %}">سجل دخول اذا كان لديك حساب بالفعل</a></small>
+        </div>
+    </form>
+
+
+
+
+
+{% endblock %}

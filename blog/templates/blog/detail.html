@@ -4,11 +4,25 @@
 
 {% block content %}
 
+
     <div class="border p-3 my-4">
 
-        <img src="{% static 'blog/images/avatar.svg' %}" style="max-width:70px" alt="صورة الناشر">
+        <img src="{{ post.author.profile.image.url }}" style="max-width:70px" alt="صورة الناشر">
 
         <span class="text-muted mx-3">نشر في {{ post.post_date|date:'d-m-Y' }}</span>
+
+
+        {% if post.author == user %}
+        <!--------- Button of editing ---------------->
+        <div class="form-group btn-editing my-3">
+            <a href="{% url 'edit_post' post.id %}" class="btn btn-secondary">تحرير</a>
+            <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">حذف</a>
+        </div>
+
+        {% endif %}
+
+
+
         <h3><a href="#">{{ post.title }}</a></h3>
         <p>{{ post.content }}</p>
 
@@ -20,13 +34,16 @@
     {% if comments %}
         {% for comment in comments %}
             <div class="card my-2 p-3 comment-card">
+                <div class="card-img">
+                    <img src="{{ comment.author.profile.image.url }}" class="img-fluid">
+                </div>
                 <div class="card-title">
                     <h3 class="">{{ comment.name }}</h3>
                     <small class="text-muted">{{ comment.comment_date|date:'d-m-Y' }} </small>
 
                 </div>
                 <div class="card-body">
-                    <p class="">{{ comment.body }}</p>
+                    <p class="">{{ comment.body|safe }}</p>
                 </div>
 
 
@@ -47,12 +64,14 @@
     <div class="newComment-body mt-5">
     <h3 class="border-bottom">اضافه تعليق</h3>
 
-    <form method="POST" class="my-5 border p-5">
+    <form method="POST" class="my-5 border p-5" novalidate>
         {% csrf_token %}
         {{ CommentForm|crispy }}
         <input type="submit" value="نشر التعليق" class="btn btn-secondary">
     </form>
 
     </div>
+
+
 
 {% endblock %}

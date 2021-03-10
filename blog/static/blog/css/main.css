@@ -44,3 +44,12 @@ a:hover{
 
 
 /*  End Post Content    */
+
+
+
+/**** post editing buttons**************/
+.btn-editing{
+    float:left;
+}
+
+/**** End post editing buttons**************/
